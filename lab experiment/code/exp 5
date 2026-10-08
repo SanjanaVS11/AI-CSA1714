@@ -1,0 +1,62 @@
+from collections import deque
+
+def is_valid(m_left, c_left, m_right, c_right):
+    # Missionaries should not be outnumbered by cannibals
+    if m_left < 0 or c_left < 0 or m_right < 0 or c_right < 0:
+        return False
+
+    if m_left > 0 and c_left > m_left:
+        return False
+
+    if m_right > 0 and c_right > m_right:
+        return False
+
+    return True
+
+
+def solve():
+    # State: (missionaries_left, cannibals_left, boat_side)
+    start = (3, 3, 0)
+    goal = (0, 0, 1)
+
+    queue = deque([(start, [])])
+    visited = set([start])
+
+    # Possible boat combinations
+    moves = [
+        (1, 0), (2, 0),
+        (0, 1), (0, 2),
+        (1, 1)
+    ]
+
+    while queue:
+        state, path = queue.popleft()
+        ml, cl, boat = state
+
+        if state == goal:
+            print("Solution found:")
+            for step in path:
+                print(step)
+            return
+
+        for m, c in moves:
+            if boat == 0:  # Boat moves left to right
+                new_state = (ml - m, cl - c, 1)
+                direction = "Left -> Right"
+            else:  # Boat moves right to left
+                new_state = (ml + m, cl + c, 0)
+                direction = "Right -> Left"
+
+            nml, ncl, _ = new_state
+            nmr = 3 - nml
+            ncr = 3 - ncl
+
+            if is_valid(nml, ncl, nmr, ncr) and new_state not in visited:
+                visited.add(new_state)
+                new_path = path + [
+                    f"{direction}: {m} Missionary(s), {c} Cannibal(s)"
+                ]
+                queue.append((new_state, new_path))
+
+
+solve()
