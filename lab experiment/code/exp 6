@@ -1,0 +1,28 @@
+
+# Vacuum Cleaner Problem in AI
+
+room = {
+    'A': 'Dirty',
+    'B': 'Dirty'
+}
+
+location = 'A'
+
+while 'Dirty' in room.values():
+    print("Current Location:", location)
+    print("Room Status:", room)
+
+    if room[location] == 'Dirty':
+        print("Action: Suck")
+        room[location] = 'Clean'
+
+    elif location == 'A':
+        print("Action: Move Right")
+        location = 'B'
+
+    else:
+        print("Action: Move Left")
+        location = 'A'
+
+print("All rooms are clean!")
+print("Final Room Status:", room)
