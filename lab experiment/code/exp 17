@@ -1,0 +1,7 @@
+
+person(rahul, '2002-05-10').
+person(priya, '2003-08-15').
+person(amit, '2001-12-20').
+
+display(Name, DOB) :-
+    person(Name, DOB).
