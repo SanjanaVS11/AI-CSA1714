@@ -1,0 +1,9 @@
+% Facts
+human(ravi).
+human(anu).
+
+% Rules
+mortal(X) :-
+    human(X).
+
+% Query
