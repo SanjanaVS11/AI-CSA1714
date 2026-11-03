@@ -1,0 +1,15 @@
+% Facts
+student(ravi).
+student(anu).
+teacher(kumar).
+teacher(priya).
+
+teaches(kumar, ravi).
+teaches(priya, anu).
+
+% Rules
+student_of(X, Y) :-
+    teaches(Y, X).
+
+teacher_of(X, Y) :-
+    teaches(X, Y).
