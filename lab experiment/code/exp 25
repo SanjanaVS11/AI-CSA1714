@@ -1,0 +1,16 @@
+% Diet facts
+diet(diabetes, 'Whole grains').
+diet(diabetes, 'Green vegetables').
+
+diet(hypertension, 'Low salt foods').
+diet(hypertension, 'Fresh fruits').
+
+diet(obesity, 'Vegetables').
+diet(obesity, 'Balanced meals').
+
+diet(fever, 'Drink sufficient water').
+diet(fever, 'Light nutritious food').
+
+% Rule
+suggest_diet(Disease, Food) :-
+    diet(Disease, Food).
