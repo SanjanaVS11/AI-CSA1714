@@ -1,0 +1,11 @@
+% Facts
+bird(sparrow).
+bird(parrot).
+bird(penguin).
+
+cannot_fly(penguin).
+
+% Rules
+can_fly(X) :-
+    bird(X),
+    \+ cannot_fly(X).
