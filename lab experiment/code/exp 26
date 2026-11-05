@@ -1,0 +1,18 @@
+move(state(door, window, floor),
+     state(middle, window, floor)).
+
+push(state(middle, window, floor),
+     state(middle, middle, floor)).
+
+climb(state(middle, middle, floor),
+      state(middle, middle, onbox)).
+
+grasp(state(middle, middle, onbox), have).
+
+solve :-
+    move(state(door, window, floor), S1),
+    push(S1, S2),
+    climb(S2, S3),
+    grasp(S3, have),
+    write('Monkey gets the banana!'),
+    nl.
