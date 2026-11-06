@@ -1,0 +1,20 @@
+symptom(john, fever).
+symptom(john, cough).
+symptom(john, headache).
+
+symptom(raj, fever).
+symptom(raj, cold).
+symptom(raj, sneezing).
+
+disease(X, flu) :-
+    symptom(X, fever),
+    symptom(X, cough),
+    symptom(X, headache).
+
+disease(X, common_cold) :-
+    symptom(X, cold),
+    symptom(X, sneezing),
+    symptom(X, fever).
+
+diagnosis(X, D) :-
+    disease(X, D).
