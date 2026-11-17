@@ -1,0 +1,17 @@
+
+x = [1, 2, 3, 4, 5]
+y = [10, 20, 30, 40, 50]
+
+n = len(x)
+
+mean_x = sum(x) / n
+mean_y = sum(y) / n
+
+b1 = sum((x[i] - mean_x) * (y[i] - mean_y)
+         for i in range(n)) / sum((i - mean_x)**2 for i in x)
+
+b0 = mean_y - b1 * mean_x
+
+prediction = b0 + b1 * 6
+
+print("Predicted Value:", prediction)
