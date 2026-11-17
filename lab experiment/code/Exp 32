@@ -1,0 +1,19 @@
+
+# Simple neural network
+
+def sigmoid(x):
+    return 1 / (1 + 2.71828 ** (-x))
+
+inputs = [0.5, 0.8]
+weights = [0.4, 0.6]
+bias = 0.2
+
+total = sum(inputs[i] * weights[i] for i in range(2))
+output = sigmoid(total + bias)
+
+print("Neural Network Output:", round(output, 3))
+
+if output > 0.5:
+    print("Image Class: Cat")
+else:
+    print("Image Class: Dog")
