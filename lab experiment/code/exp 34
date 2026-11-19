@@ -1,0 +1,20 @@
+import random
+
+population = [random.randint(0, 31) for i in range(6)]
+
+for generation in range(10):
+    population.sort(key=lambda x: x*x, reverse=True)
+
+    p1, p2 = population[0], population[1]
+
+    child = (p1 + p2) // 2
+
+    if random.random() < 0.3:
+        child = random.randint(0, 31)
+
+    population[-1] = child
+
+best = max(population, key=lambda x: x*x)
+
+print("Best Solution:", best)
+print("Maximum Value:", best*best)
