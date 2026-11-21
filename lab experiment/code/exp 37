@@ -1,0 +1,25 @@
+
+ratings = {
+    "User1": {"Movie1": 5, "Movie2": 4},
+    "User2": {"Movie1": 4, "Movie2": 5, "Movie3": 5},
+    "User3": {"Movie2": 3, "Movie3": 4}
+}
+
+user = "User1"
+scores = {}
+
+for other in ratings:
+    if other != user:
+        common = set(ratings[user]) & set(ratings[other])
+        similarity = sum(ratings[user][m] * ratings[other][m]
+                         for m in common)
+
+        for movie, rating in ratings[other].items():
+            if movie not in ratings[user]:
+                scores[movie] = scores.get(movie, 0) + rating * similarity
+
+if scores:
+    recommended = max(scores, key=scores.get)
+    print("Recommended Movie:", recommended)
+else:
+    print("No recommendations available")
