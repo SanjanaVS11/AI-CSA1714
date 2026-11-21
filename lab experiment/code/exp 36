@@ -1,0 +1,17 @@
+
+data = [
+    [2, 4, 6],
+    [3, 5, 7],
+    [4, 6, 8],
+    [5, 7, 9]
+]
+
+mean = [sum(col)/len(col) for col in zip(*data)]
+
+centered = [[x-m for x, m in zip(row, mean)]
+            for row in data]
+
+reduced = [[sum(row)/3] for row in centered]
+
+print("Original Data:", data)
+print("Reduced Data:", reduced)
